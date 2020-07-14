@@ -7,5 +7,5 @@ class VotesForm(forms.ModelForm):
     """Голоса"""
     class Meta:
         model = Persons
-        fields = ("surname", "votes")
+        fields = ("votes",)
 
