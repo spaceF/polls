@@ -18,7 +18,7 @@ class Polls(models.Model):
         return reverse('polls:detail', kwargs={'slug': self.url})
 
     def get_absolute_result_url(self):
-        return reverse('polls:result', kwargs={'pk': self.id})
+        return reverse('polls:result', kwargs={'slug': self.url})
 
     class Meta:
         verbose_name = 'Голосование'
