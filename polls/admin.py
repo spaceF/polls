@@ -9,7 +9,7 @@ class PersonsInline(admin.TabularInline):
     extra = 1
     fields = ('votes', 'img', 'get_image', 'name',
               'middle_name', 'surname', 'age', 'bio')
-    readonly_fields = ('get_image',)
+    readonly_fields = ('votes', 'get_image')
 
     def get_image(self, obj):
         return mark_safe(f'<img src={obj.img.url} '
@@ -22,7 +22,7 @@ class PersonsInline(admin.TabularInline):
 class PollsAdmin(admin.ModelAdmin):
     """Голосования"""
 
-    """Детали голосования"""
+    # Детали голосования
     fieldsets = (
         ('Общие', {
             'fields': (('name', 'url',),)
@@ -42,7 +42,7 @@ class PollsAdmin(admin.ModelAdmin):
     save_on_top = True
     save_as = True
 
-    """Список голосований"""
+    # Список голосований
     list_editable = ('active',)
     list_display = ('id', 'name', 'start',
                     'finish', 'active',)
@@ -55,11 +55,11 @@ class PollsAdmin(admin.ModelAdmin):
 class PersonsAdmin(admin.ModelAdmin):
     """Кандидаты"""
 
-    """Детали кандидат"""
+    # Детали кандидат
     exclude = ('polls', 'votes',)
     readonly_fields = ('get_image',)
 
-    """Список кандидатов"""
+    # Список кандидатов
     list_display = ('get_image', 'name', 'middle_name',
                     'surname', 'age', 'bio',)
     list_display_links = ('name',)

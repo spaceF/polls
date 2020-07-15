@@ -4,6 +4,7 @@ from django.urls import reverse
 
 class Polls(models.Model):
     """Голосования"""
+
     title = models.CharField('Голосование', max_length=200)
     name = models.CharField('Название голосования', max_length=200)
     start = models.DateTimeField('Дата начала')
@@ -29,6 +30,7 @@ class Polls(models.Model):
 
 class Persons(models.Model):
     """Кандидаты"""
+
     img = models.ImageField('Фотография', upload_to='persons/')
     name = models.CharField('Имя', max_length=200)
     middle_name = models.CharField('Отчество', max_length=200)
@@ -42,6 +44,7 @@ class Persons(models.Model):
     class Meta:
         verbose_name = 'Кандитат'
         verbose_name_plural = 'Кандидаты'
+        # Отображение кандидатов по убыванию голосов
         ordering = ["-votes"]
 
     def __str__(self):
