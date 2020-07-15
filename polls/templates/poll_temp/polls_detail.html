@@ -6,7 +6,6 @@
 </head>
 <body>
     <h2>{{ detail_polls.name }}</h2>
-
     <br>
         {% for person in detail_polls.persons_set.all %}
             <img src="{{ person.img.url }}" width="100" height="110">
@@ -15,11 +14,10 @@
             <p>Фамилия: {{ person.surname }}</p>
             <p>Возраст: {{ person.age }}</p>
             <p>Краткая биография: {{ person.bio }}</p>
-
             <br>
         {% endfor %}
 
-        <form action="{% url 'polls:result' detail_polls.id %}" method="post">
+        <form action="{% url 'polls:vote' detail_polls.id %}" method="post">
             {% csrf_token %}
             <p><select size="3" multiple name="">
                 <option disabled>Выберите кандидата</option>
@@ -30,6 +28,10 @@
                 </select></p>
             <p><input type="submit" value="Отправить"></p>
         </form>
+        <br>
+        <a href="{% url 'polls:home'  %}">
+            Активные голосования
+        </a>
 </body>
 </html>
 

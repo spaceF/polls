@@ -7,17 +7,29 @@
 <body>
     {% if result_polls.active == 0 %}
         <h2>Голосование завершено</h2>
+    {% else %}
+        <p>Дата окончания голосования {{ result_polls.finish }}</p>
     {% endif %}
 
     <h3>{{ result_polls.name }}</h3>
-    <br>
+        <table>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Голоса</th>
+            </tr>
         {% for person in result_polls.persons_set.all %}
-            <img src="{{ person.img.url }}" width="100" height="110">
-            <p>Фамилия: {{ person.surname }}</p><p>Голоса: {{ person.votes }}</p>
-            <br>
+            <tr>
+                <th>{{ person.name }}</th>
+                <th>{{ person.surname }}</th>
+                <th>{{ person.votes }}</th>
+            </tr>
         {% endfor %}
-
-
+        </table>
+        <br>
+        <a href="{% url 'polls:home'  %}">
+            Активные голосования
+        </a>
 </body>
 </html>
 
