@@ -4,8 +4,9 @@ from .models import Persons
 
 
 class VotesForm(forms.ModelForm):
-    """Голоса"""
+    """Форма голосования"""
     class Meta:
         model = Persons
-        fields = ("votes",)
+        fields = '__all__'
+
 

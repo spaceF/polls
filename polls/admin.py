@@ -9,7 +9,7 @@ class PersonsInline(admin.TabularInline):
     extra = 1
     fields = ('votes', 'img', 'get_image', 'name',
               'middle_name', 'surname', 'age', 'bio')
-    readonly_fields = ('votes', 'get_image')
+    readonly_fields = ('get_image',)
 
     def get_image(self, obj):
         return mark_safe(f'<img src={obj.img.url} '
