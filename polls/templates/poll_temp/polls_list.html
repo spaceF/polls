@@ -22,7 +22,7 @@
                 {% for polls in list_polls %}
                     {% if polls.active == 0 %}
                         <li>
-                            <a href="{% url 'polls:result' polls.id %}">
+                            <a href="{{ polls.get_absolute_result_url }}">
                                 {{ polls.name }}
                             </a><br>
                         </li>
