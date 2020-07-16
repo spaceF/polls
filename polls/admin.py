@@ -21,8 +21,7 @@ class PersonsInline(admin.TabularInline):
 @admin.register(Polls)
 class PollsAdmin(admin.ModelAdmin):
     """Голосования"""
-
-    # Детали голосования
+    """Детали голосования"""
     fieldsets = (
         ('Общие', {
             'fields': (('name', 'url',),)
@@ -42,7 +41,7 @@ class PollsAdmin(admin.ModelAdmin):
     save_on_top = True
     save_as = True
 
-    # Список голосований
+    """Список голосований"""
     list_editable = ('active',)
     list_display = ('id', 'name', 'start',
                     'finish', 'active',)
@@ -54,14 +53,14 @@ class PollsAdmin(admin.ModelAdmin):
 @admin.register(Persons)
 class PersonsAdmin(admin.ModelAdmin):
     """Кандидаты"""
-
-    # Детали кандидат
-    exclude = ('polls', 'votes',)
+    """Детали кандидата"""
+    exclude = ('polls', 'votes')
     readonly_fields = ('get_image',)
 
-    # Список кандидатов
-    list_display = ('get_image', 'name', 'middle_name',
-                    'surname', 'age', 'bio',)
+    """Список кандидатов"""
+    list_display = ('id', 'get_image', 'name',
+                    'middle_name', 'surname',
+                    'age', 'bio')
     list_display_links = ('name',)
     list_filter = ('polls__name',)
 

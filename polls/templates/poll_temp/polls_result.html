@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ result_polls.name }}</title>
 </head>
 <body>
+
+
+        <p> {{ result_polls.persons.votes }}</p>
+
+
     {% if result_polls.active == 0 %}
         <h2>Голосование завершено</h2>
     {% else %}
@@ -26,6 +32,7 @@
             </tr>
         {% endfor %}
         </table>
+
         <br>
         <a href="{% url 'polls:home'  %}">
             Активные голосования
