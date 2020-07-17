@@ -29,6 +29,7 @@ class PollsDetailView(DetailView):
 class ResultDetailView(DetailView):
     """Результаты голосования"""
     model = Polls
+    queryset = Polls.objects.all()
     template_name = "poll_temp/polls_result.html"
     context_object_name = "result_polls"
     slug_field = "url"
