@@ -7,10 +7,6 @@
 <body>
         <h1>{{ detail_polls.name }}</h1>
 
-        {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-        {% endif %}
-
         <form action="{% url 'polls:vote' detail_polls.id %}" method="post">
         {% csrf_token %}
         {% for person in detail_polls.persons_set.all %}

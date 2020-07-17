@@ -39,7 +39,6 @@ class Persons(models.Model):
     polls = models.ForeignKey(Polls, verbose_name='Голосования',
                               on_delete=models.CASCADE, default=0)
 
-
     class Meta:
         verbose_name = 'Кандитат'
         verbose_name_plural = 'Кандидаты'

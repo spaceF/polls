@@ -1,4 +1,4 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 from django.utils import timezone
@@ -6,8 +6,8 @@ from django.utils import timezone
 from .forms import AddVoteForm
 from .models import Polls
 
-
 POLLS_DETAIL = "poll_temp/polls_detail.html"
+POLLS_RESULT = "poll_temp/polls_result.html"
 
 
 class PollsListView(ListView):
@@ -51,8 +51,8 @@ class AddVoteView(View):
                 poll.active = 0
                 poll.save()
             return redirect(poll.get_absolute_result_url())
-        # Добавить предупреждение
-        return redirect(POLLS_DETAIL)
+        return render(request, POLLS_RESULT, {
+                        'error_message': "Вы не проголосовали!"})
 
 
 def check_active_poll(poll, persons):
